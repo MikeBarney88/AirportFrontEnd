@@ -140,3 +140,20 @@ body {
   background-color: #dbeafe;
   color: #1e40af;
 }
+
+/* Loading and Error Messages */
+.message-center {
+  text-align: center;
+  padding: 2rem;
+}
+
+.error-message {
+  text-align: center;
+  color: #991b1b;
+}
+
+/* Empty table state */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+}
