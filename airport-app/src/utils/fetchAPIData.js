@@ -52,6 +52,23 @@ export async function fetchFlightsData() {
   }
 }
 
+export async function fetchCitiesData() {
+    try {
+        const citiesURL = "http://localhost:8080/cities";
+
+        const response = await fetch(citiesURL);
+        if (!response.ok) {
+            throw new Error(`The API call to "${citiesURL}" resulted in a ${response.status} error.`);
+        }
+
+        const citiesData = await response.json();
+        return citiesData;
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+}
+
+
 export async function fetchFlightsByAirport(airportCode) {
   try {
     const flightsURL = `http://localhost:8080/flights/airport/${airportCode}`;
