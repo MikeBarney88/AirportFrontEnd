@@ -19,6 +19,50 @@ export async function createAirport(cityId, airportName, airportCode) {
     }
 }
 
+export async function createFlight(airportId, flightNumber, flightScheduledTime, flightStatus) {
+    try {
+        const newFlightData = {
+            flightNumber,
+            scheduledTime: flightScheduledTime,
+            status: flightStatus
+        };
+
+        const response = await fetch(`http://localhost:8080/flights?fromAirportId=${airportId}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newFlightData)
+        });
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+}
+
+export async function createAirportGate(airportId, gateNumber, gateTerminal, gateStatus) {
+    try {
+        const newAirportGateData = {
+            gateNumber,
+            terminal: gateTerminal,
+            status: gateStatus
+        };
+
+        const response = await fetch(`http://localhost:8080/airports/${airportId}/gates`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newAirportGateData)
+        });
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+}
+
 export async function createAircraft(aircraftType, aircraftAirlineName, aircraftNumberOfPassengers) {
     try {
         const newAircraftData = {
@@ -107,6 +151,50 @@ export async function updateAirport(airportId, airportUpdatedName, airportUpdate
     }
 }
 
+export async function updateFlight(airportId, updatedflightNumber, flightUpdatedScheduledTime, flightUpdatedStatus) {
+    try {
+        const updatedFlightData = {
+            flightNumber: updatedflightNumber,
+            scheduledTime: flightUpdatedScheduledTime,
+            status: flightUpdatedStatus
+        };
+
+        const response = await fetch(`http://localhost:8080/flights?fromAirportId=${airportId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedFlightData)
+        });
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+}
+
+export async function updateAirportGate(airportId, updatedGateNumber, gateUpdatedTerminal, gateUpdatedStatus) {
+    try {
+        const updatedAirportGateData = {
+            gateNumber: updatedGateNumber,
+            terminal: gateUpdatedTerminal,
+            status: gateUpdatedStatus
+        };
+
+        const response = await fetch(`http://localhost:8080/airports/${airportId}/gates`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedAirportGateData)
+        });
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+}
+
 export async function updateAircraft(aircraftId, aircraftUpdatedType, aircraftUpdatedAirlineName, aircraftUpdatedNumberOfPassengers) {
     try {
         const updatedAircraftData = {
@@ -177,6 +265,30 @@ export async function updateCity(cityId, cityUpdatedName, cityUpdatedState, city
 export async function deleteAirport(airportId) {
     try {
         const response = await fetch(`http://localhost:8080/airports/${airportId}`, {
+            method: "DELETE"
+        });
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+}
+
+export async function deleteFlight(flightId) {
+    try {
+        const response = await fetch(`http://localhost:8080/flights/${flightId}`, {
+            method: "DELETE"
+        });
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+}
+
+export async function deleteAirportGate(airportId, airportGateNumber) {
+    try {
+        const response = await fetch(`http://localhost:8080/airports/${airportId}/gates/${airportGateNumber}`, {
             method: "DELETE"
         });
 

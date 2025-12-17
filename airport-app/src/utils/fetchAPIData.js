@@ -85,3 +85,21 @@ export async function fetchFlightsByAirport(airportCode) {
     throw error;
   }
 }
+
+
+export async function fetchAirportGatesData(airportId) {
+  try {
+    const airportGatesURL = `http://localhost:8080/airports/${airportid}/gates`;
+    const response = await fetch(airportGatesURL);
+    if (!response.ok) {
+      throw new Error(
+        `The API call to "${airportGatesURL}" resulted in a ${response.status} error.`
+      );
+    }
+    const airportGatesData = await response.json();
+    return airportGatesData;
+  } catch (error) {
+    console.error("Error: ", error);
+    throw error;
+  }
+}
