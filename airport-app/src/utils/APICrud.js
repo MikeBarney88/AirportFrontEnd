@@ -19,7 +19,7 @@ export async function createAirport(cityId, airportName, airportCode) {
     }
 }
 
-export async function createFlight(airportId, flightNumber, flightScheduledTime, flightStatus) {
+export async function createFlight(fromAirportId, toAirportId, flightNumber, flightScheduledTime, flightStatus) {
     try {
         const newFlightData = {
             flightNumber,
@@ -27,7 +27,7 @@ export async function createFlight(airportId, flightNumber, flightScheduledTime,
             status: flightStatus
         };
 
-        const response = await fetch(`http://localhost:8080/flights?fromAirportId=${airportId}`, {
+        const response = await fetch(`http://localhost:8080/flights?fromAirportId=${fromAirportId}&toAirportId=${toAirportId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -151,7 +151,7 @@ export async function updateAirport(airportId, airportUpdatedName, airportUpdate
     }
 }
 
-export async function updateFlight(airportId, updatedflightNumber, flightUpdatedScheduledTime, flightUpdatedStatus) {
+export async function updateFlight(fromAirportId, toAirportId, updatedflightNumber, flightUpdatedScheduledTime, flightUpdatedStatus) {
     try {
         const updatedFlightData = {
             flightNumber: updatedflightNumber,
@@ -159,7 +159,7 @@ export async function updateFlight(airportId, updatedflightNumber, flightUpdated
             status: flightUpdatedStatus
         };
 
-        const response = await fetch(`http://localhost:8080/flights?fromAirportId=${airportId}`, {
+        const response = await fetch(`http://localhost:8080/flights?fromAirportId=${fromAirportId}&toAirportId=${toAirportId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
