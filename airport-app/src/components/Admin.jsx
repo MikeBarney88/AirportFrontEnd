@@ -73,7 +73,7 @@ export default function Admin() {
   const loadGates = async (airportId) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/airports/${airportId}/gates`
+        `http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports/${airportId}/gates`
       );
       if (response.ok) {
         const gatesData = await response.json();
@@ -97,7 +97,7 @@ export default function Admin() {
     }
     try {
       const response = await fetch(
-        `http://localhost:8080/flights?fromAirportId=${flightForm.fromAirportId}&toAirportId=${flightForm.toAirportId}`,
+        `http://ec2-3-208-172-198.compute-1.amazonaws.com:80/flights?fromAirportId=${flightForm.fromAirportId}&toAirportId=${flightForm.toAirportId}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -131,7 +131,7 @@ export default function Admin() {
     if (!window.confirm("Are you sure you want to delete this flight?")) return;
     try {
       const response = await fetch(
-        `http://localhost:8080/flights/${flightId}`,
+        `http://ec2-3-208-172-198.compute-1.amazonaws.com:80/flights/${flightId}`,
         { method: "DELETE" }
       );
       if (response.ok) {
@@ -154,7 +154,7 @@ export default function Admin() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:8080/airports?cityId=${airportForm.cityId}`,
+        `http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports?cityId=${airportForm.cityId}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -182,7 +182,7 @@ export default function Admin() {
       return;
     try {
       const response = await fetch(
-        `http://localhost:8080/airports/${airportId}`,
+        `http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports/${airportId}`,
         { method: "DELETE" }
       );
       if (response.ok) {
@@ -204,7 +204,7 @@ export default function Admin() {
   const handleAddAircraft = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/aircrafts", {
+      const response = await fetch("http://ec2-3-208-172-198.compute-1.amazonaws.com:80/aircrafts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -231,7 +231,7 @@ export default function Admin() {
       return;
     try {
       const response = await fetch(
-        `http://localhost:8080/aircrafts/${aircraftId}`,
+        `http://ec2-3-208-172-198.compute-1.amazonaws.com:80/aircrafts/${aircraftId}`,
         { method: "DELETE" }
       );
       if (response.ok) {
@@ -258,7 +258,7 @@ export default function Admin() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:8080/airports/${gateForm.airportId}/gates`,
+        `http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports/${gateForm.airportId}/gates`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -294,7 +294,7 @@ export default function Admin() {
     if (!window.confirm("Are you sure you want to delete this gate?")) return;
     try {
       const response = await fetch(
-        `http://localhost:8080/airports/gates/${gateNumber}`,
+        `http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports/gates/${gateNumber}`,
         { method: "DELETE" }
       );
       if (response.ok) {
@@ -318,7 +318,7 @@ export default function Admin() {
   const handleAddCity = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/cities", {
+      const response = await fetch("http://ec2-3-208-172-198.compute-1.amazonaws.com:80/cities", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -343,7 +343,7 @@ export default function Admin() {
   const handleDeleteCity = async (cityId) => {
     if (!window.confirm("Are you sure you want to delete this city?")) return;
     try {
-      const response = await fetch(`http://localhost:8080/city/${cityId}`, {
+      const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/city/${cityId}`, {
         method: "DELETE",
       });
       if (response.ok) {

@@ -1,6 +1,6 @@
 export async function fetchAirportsData() {
   try {
-    const airportsURL = "http://localhost:8080/airports";
+    const airportsURL = "http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports";
 
     const response = await fetch(airportsURL);
     if (!response.ok) {
@@ -18,7 +18,7 @@ export async function fetchAirportsData() {
 
 export async function fetchAircraftsData() {
   try {
-    const aircraftsURL = "http://localhost:8080/aircrafts";
+    const aircraftsURL = "http://ec2-3-208-172-198.compute-1.amazonaws.com:80/aircrafts";
 
     const response = await fetch(aircraftsURL);
     if (!response.ok) {
@@ -36,7 +36,7 @@ export async function fetchAircraftsData() {
 
 export async function fetchFlightsData() {
   try {
-    const flightsURL = "http://localhost:8080/flights";
+    const flightsURL = "http://ec2-3-208-172-198.compute-1.amazonaws.com:80/flights";
 
     const response = await fetch(flightsURL);
     if (!response.ok) {
@@ -54,7 +54,7 @@ export async function fetchFlightsData() {
 
 export async function fetchCitiesData() {
     try {
-        const citiesURL = "http://localhost:8080/cities";
+        const citiesURL = "http://ec2-3-208-172-198.compute-1.amazonaws.com:80/cities";
 
         const response = await fetch(citiesURL);
         if (!response.ok) {
@@ -71,7 +71,7 @@ export async function fetchCitiesData() {
 
 export async function fetchFlightsByAirport(airportCode) {
   try {
-    const flightsURL = `http://localhost:8080/flights/airport/${airportCode}`;
+    const flightsURL = `http://ec2-3-208-172-198.compute-1.amazonaws.com:80/flights/airport/${airportCode}`;
     const response = await fetch(flightsURL);
     if (!response.ok) {
       throw new Error(
@@ -89,7 +89,7 @@ export async function fetchFlightsByAirport(airportCode) {
 
 export async function fetchAirportGatesData(airportId) {
   try {
-    const airportGatesURL = `http://localhost:8080/airports/${airportid}/gates`;
+    const airportGatesURL = `http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports/${airportid}/gates`;
     const response = await fetch(airportGatesURL);
     if (!response.ok) {
       throw new Error(

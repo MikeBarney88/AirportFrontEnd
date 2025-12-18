@@ -5,7 +5,7 @@ export async function createAirport(cityId, airportName, airportCode) {
             code: airportCode
         };
 
-        const response = await fetch(`http://localhost:8080/airports?cityId=${cityId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports?cityId=${cityId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -27,7 +27,7 @@ export async function createFlight(fromAirportId, toAirportId, flightNumber, fli
             status: flightStatus
         };
 
-        const response = await fetch(`http://localhost:8080/flights?fromAirportId=${fromAirportId}&toAirportId=${toAirportId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/flights?fromAirportId=${fromAirportId}&toAirportId=${toAirportId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -49,7 +49,7 @@ export async function createAirportGate(airportId, gateNumber, gateTerminal, gat
             status: gateStatus
         };
 
-        const response = await fetch(`http://localhost:8080/airports/${airportId}/gates`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports/${airportId}/gates`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -71,7 +71,7 @@ export async function createAircraft(aircraftType, aircraftAirlineName, aircraft
             numberOfPassengers: aircraftNumberOfPassengers
         };
 
-        const response = await fetch("http://localhost:8080/aircrafts", {
+        const response = await fetch("http://ec2-3-208-172-198.compute-1.amazonaws.com:80/aircrafts", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -93,7 +93,7 @@ export async function createPassenger(passengerFirstName, passengerLastName, pas
             phoneNumber: passengerPhoneNumber
         };
 
-        const response = await fetch("http://localhost:8080/passengers", {
+        const response = await fetch("http://ec2-3-208-172-198.compute-1.amazonaws.com:80/passengers", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -115,7 +115,7 @@ export async function createCity(cityName, cityState, cityPopulation) {
             population: cityPopulation
         };
 
-        const response = await fetch("http://localhost:8080/cities", {
+        const response = await fetch("http://ec2-3-208-172-198.compute-1.amazonaws.com:80/cities", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -137,7 +137,7 @@ export async function updateAirport(airportId, airportUpdatedName, airportUpdate
             code: airportUpdatedCode
         };
 
-        const response = await fetch(`http://localhost:8080/airports/${airportId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports/${airportId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -159,7 +159,7 @@ export async function updateFlight(fromAirportId, toAirportId, updatedflightNumb
             status: flightUpdatedStatus
         };
 
-        const response = await fetch(`http://localhost:8080/flights?fromAirportId=${fromAirportId}&toAirportId=${toAirportId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/flights?fromAirportId=${fromAirportId}&toAirportId=${toAirportId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -181,7 +181,7 @@ export async function updateAirportGate(airportId, updatedGateNumber, gateUpdate
             status: gateUpdatedStatus
         };
 
-        const response = await fetch(`http://localhost:8080/airports/${airportId}/gates`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports/${airportId}/gates`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -203,7 +203,7 @@ export async function updateAircraft(aircraftId, aircraftUpdatedType, aircraftUp
             numberOfPassengers: aircraftUpdatedNumberOfPassengers
         };
 
-        const response = await fetch(`http://localhost:8080/aircrafts/${aircraftId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/aircrafts/${aircraftId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -225,7 +225,7 @@ export async function updatePassenger(passengerId, passengerUpdatedFirstName, pa
             phoneNumber: passengerUpdatedPhoneNumber
         };
 
-        const response = await fetch(`http://localhost:8080/passengers/${passengerId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/passengers/${passengerId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -247,7 +247,7 @@ export async function updateCity(cityId, cityUpdatedName, cityUpdatedState, city
             population: cityUpdatedPopulation
         };
 
-        const response = await fetch(`http://localhost:8080/cities/${cityId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/cities/${cityId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -264,7 +264,7 @@ export async function updateCity(cityId, cityUpdatedName, cityUpdatedState, city
 
 export async function deleteAirport(airportId) {
     try {
-        const response = await fetch(`http://localhost:8080/airports/${airportId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports/${airportId}`, {
             method: "DELETE"
         });
 
@@ -276,7 +276,7 @@ export async function deleteAirport(airportId) {
 
 export async function deleteFlight(flightId) {
     try {
-        const response = await fetch(`http://localhost:8080/flights/${flightId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/flights/${flightId}`, {
             method: "DELETE"
         });
 
@@ -288,7 +288,7 @@ export async function deleteFlight(flightId) {
 
 export async function deleteAirportGate(airportId, airportGateNumber) {
     try {
-        const response = await fetch(`http://localhost:8080/airports/${airportId}/gates/${airportGateNumber}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/airports/${airportId}/gates/${airportGateNumber}`, {
             method: "DELETE"
         });
 
@@ -300,7 +300,7 @@ export async function deleteAirportGate(airportId, airportGateNumber) {
 
 export async function deleteAircraft(aircraftId) {
     try {
-        const response = await fetch(`http://localhost:8080/aircrafts/${aircraftId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/aircrafts/${aircraftId}`, {
             method: "DELETE"
         });
 
@@ -312,7 +312,7 @@ export async function deleteAircraft(aircraftId) {
 
 export async function deletePassenger(passengerId) {
     try {
-        const response = await fetch(`http://localhost:8080/passengers/${passengerId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/passengers/${passengerId}`, {
             method: "DELETE"
         });
 
@@ -324,7 +324,7 @@ export async function deletePassenger(passengerId) {
 
 export async function deleteCity(cityId) {
     try {
-        const response = await fetch(`http://localhost:8080/city/${cityId}`, {
+        const response = await fetch(`http://ec2-3-208-172-198.compute-1.amazonaws.com:80/city/${cityId}`, {
             method: "DELETE"
         });
 
