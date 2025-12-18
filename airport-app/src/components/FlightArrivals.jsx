@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import {
-  fetchAirportsData,
-  fetchFlightsByAirport,
-} from "../utils/fetchAPIData";
+import { fetchAirportsData, fetchFlightsData } from "../utils/fetchAPIData";
 
 export default function FlightArrivals() {
   const [selectedAirport, setSelectedAirport] = useState("");
@@ -45,8 +42,13 @@ export default function FlightArrivals() {
     setError(null);
 
     try {
-      const flightsData = await fetchFlightsByAirport(selectedAirport);
-      setFlights(flightsData || []);
+      const flightsData = await fetchFlightsData();
+
+      const arrivingFlights = flightsData.filter(
+        (flight) => flight.toAirport?.code === selectedAirport
+      );
+
+      setFlights(arrivingFlights || []);
     } catch (err) {
       setError("Failed to load flights");
       console.error("Error loading flights:", err);
@@ -93,8 +95,14 @@ export default function FlightArrivals() {
 
   return (
     <div className="flight-arrivals-container">
+      <div className="image-container">
+        <img
+          src="https://images.unsplash.com/photo-1725957297244-d534c86e3088?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Plane Landing"
+          className="image"
+        />
+      </div>
       <h1 className="main-title">Flight Arrivals</h1>
-
       <div className="dropdown-container">
         <label htmlFor="airport-select" className="dropdown-label">
           Select Airport:
