@@ -343,7 +343,7 @@ export default function Admin() {
   const handleDeleteCity = async (cityId) => {
     if (!window.confirm("Are you sure you want to delete this city?")) return;
     try {
-      const response = await fetch(`http://localhost:8080/cities/${cityId}`, {
+      const response = await fetch(`http://localhost:8080/city/${cityId}`, {
         method: "DELETE",
       });
       if (response.ok) {

@@ -324,7 +324,7 @@ export async function deletePassenger(passengerId) {
 
 export async function deleteCity(cityId) {
     try {
-        const response = await fetch(`http://localhost:8080/cities/${cityId}`, {
+        const response = await fetch(`http://localhost:8080/city/${cityId}`, {
             method: "DELETE"
         });
 
